@@ -152,10 +152,11 @@ CORS_ALLOW_METHODS = [
     'PUT',
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-    "https://your-frontend-site.netlify.app",  # Add your production frontend URL too
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:5173",
+#     "https://your-frontend-site.netlify.app",  # Add your production frontend URL too
+# ]
+CORS_ALLOW_ALL_ORIGINS = True
 
 
 REST_FRAMEWORK = {
