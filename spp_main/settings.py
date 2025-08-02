@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'corsheaders',
 ]
 
-MIDDLEWARE.insert(0, "corsheaders.middleware.CorsMiddleware")
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
@@ -62,6 +61,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+
 
 ROOT_URLCONF = 'spp_main.urls'
 
