@@ -31,8 +31,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['stock-prediction-backend-vvm3.onrender.com', 'localhost', '127.0.0.1']
-
+ALLOWED_HOSTS = ['stock-prediction-backend-vvm3.onrender.com', 'localhost']
 
 
 # Application definition
@@ -62,6 +61,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+INSTALLED_APPS += ['corsheaders']
+MIDDLEWARE = ['corsheaders.middleware.CorsMiddleware'] + MIDDLEWARE
 
 
 ROOT_URLCONF = 'spp_main.urls'
@@ -132,11 +133,11 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:5173",
-#     "https://your-frontend-site.netlify.app",  # replace with your real Netlify URL if available
-# ]
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "https://your-frontend-site.netlify.app",  # replace with your real Netlify URL if available
+]
+
 
 CORS_ALLOW_HEADERS = [
     "accept",
@@ -175,3 +176,6 @@ SIMPLE_JWT = {
 # Media files configuration
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR /'media'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
